@@ -1,0 +1,10 @@
+stages:
+  download:
+    cmd:
+      - dvc update -R data/download
+
+  compile:
+    cmd:
+      - . src/update.sh
+    deps:
+      - src/update.sh
