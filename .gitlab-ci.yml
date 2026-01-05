@@ -1,0 +1,51 @@
+# References:
+# - https://docs.astral.sh/uv/guides/integration/gitlab/
+
+stages:
+  - reproduce
+
+variables:
+  UV_VERSION: "0.5"
+  PYTHON_VERSION: "3.12"
+  BASE_LAYER: bookworm-slim
+  # GitLab CI creates a separate mountpoint for the build directory,
+  # so we need to copy instead of using hard links.
+  UV_LINK_MODE: copy
+
+repro:
+  stage: repro
+  image: ghcr.io/astral-sh/uv:$UV_VERSION-python$PYTHON_VERSION-$BASE_LAYER
+  tags:
+    - public-docker
+  only:
+    # Run only when triggered by a GitLab schedule
+    - schedules
+
+  before_script:
+    # Install curl
+    - apt-get update -q && apt-get install -y curl -q
+
+    # Run the secure files downloader
+    # https://docs.gitlab.com/ci/secure_files/
+    - curl --silent "https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/download-secure-files/-/raw/main/installer" | bash
+    # Copy the config file that contains the S3 remote settings for write access
+    - cp .secure_files/config .dvc/config
+
+    # Ensure git is installed
+    - "command -v git >/dev/null || apt-get install git -y -q"
+    - git config user.name "gitlab-ci"
+    - git config user.email "m.bischoff@fz-juelich.de"
+    - uv sync
+  script:
+    - source .venv/bin/activate
+
+    - head -n 6 .dvc/config
+    # Pull data and reproduce datasets
+    - dvc repro --pull -vv
+    # Send data to remote storage
+    - dvc push
+
+    # Uses the deploy key of the repo
+    - git add .
+    - git commit -m "Auto reproduce (CI)" || echo "No changes"
+    - git push
