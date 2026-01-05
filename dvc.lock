@@ -9,8 +9,8 @@ stages:
     deps:
     - path: src/update.sh
       hash: md5
-      md5: 7286713be58cf1ad8145e09491464d11
-      size: 560
+      md5: 58cee680aeb19dd14144afc264f9aa7b
+      size: 519
     outs:
     - path: data/mpc-distant
       hash: md5

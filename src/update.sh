@@ -12,5 +12,3 @@ mv $INPUT_PATH/distant_extended.json $OUTPUT_PATH/distant_extended.json
 # Copy the unpacked file to the mpc-distant-latest directory
 cp $INPUT_PATH/Extended_MPCORB_Data_Format_Manual.pdf \
     $OUTPUT_PATH/Extended_MPCORB_Data_Format_Manual.pdf
-
-rm $INPUT_PATH/distant_extended.json.gz
