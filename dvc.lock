@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  download:
+    cmd:
+    - dvc update -R data/download
+  compile:
+    cmd:
+    - . src/update.sh
+    deps:
+    - path: src/update.sh
+      hash: md5
+      md5: 7286713be58cf1ad8145e09491464d11
+      size: 560
+    outs:
+    - path: data/mpc-distant
+      hash: md5
+      md5: b225d6ad3bc4695a57d96736c011390b.dir
+      size: 4348649
+      nfiles: 2

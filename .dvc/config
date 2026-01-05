@@ -1,0 +1,5 @@
+[core]
+    autostage = true
+    remote = storage
+['remote "storage"']
+    url = https://just-object.fz-juelich.de/clusterflybys/dvc-remote

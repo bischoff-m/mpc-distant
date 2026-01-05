@@ -1,0 +1,13 @@
+md5: c60d9a2b094b89c4b76350c3e01abd7e
+frozen: true
+deps:
+- checksum: '"4c65e-617ead48a8ff7"'
+  size: 312926
+  hash: md5
+  path: 
+    https://minorplanetcenter.net/Extended_Files/Extended_MPCORB_Data_Format_Manual.pdf
+outs:
+- md5: 0e3cb1fd914ed0f190eb9a2e4b4095a5
+  size: 312926
+  hash: md5
+  path: Extended_MPCORB_Data_Format_Manual.pdf

@@ -8,3 +8,5 @@ stages:
       - . src/update.sh
     deps:
       - src/update.sh
+    outs:
+      - data/mpc-distant

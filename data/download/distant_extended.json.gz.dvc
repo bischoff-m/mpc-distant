@@ -1,0 +1,12 @@
+md5: 63b7730d826c8b813697e540939c3f99
+frozen: true
+deps:
+- checksum: '"bf205-647a8b05e4bf4"'
+  size: 782853
+  hash: md5
+  path: https://minorplanetcenter.net/Extended_Files/distant_extended.json.gz
+outs:
+- md5: 8fbad47c4ba18e9bcd6996e760ce9f0b
+  size: 782853
+  hash: md5
+  path: distant_extended.json.gz
