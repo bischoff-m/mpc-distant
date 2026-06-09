@@ -7,6 +7,11 @@ stages:
     cmd:
     - . src/update.sh
     deps:
+    - path: data/download
+      hash: md5
+      md5: cd58e2162a77195d89014f930354c3c5.dir
+      size: 1154732
+      nfiles: 5
     - path: src/update.sh
       hash: md5
       md5: 58cee680aeb19dd14144afc264f9aa7b
@@ -14,6 +19,6 @@ stages:
     outs:
     - path: data/mpc-distant
       hash: md5
-      md5: b225d6ad3bc4695a57d96736c011390b.dir
-      size: 4348649
+      md5: a4e79bca642385b29f73f0daf6127a36.dir
+      size: 4671312
       nfiles: 2
